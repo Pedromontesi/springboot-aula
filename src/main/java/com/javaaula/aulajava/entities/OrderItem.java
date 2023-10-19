@@ -2,6 +2,7 @@ package com.javaaula.aulajava.entities;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javaaula.aulajava.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
@@ -13,7 +14,7 @@ import jakarta.persistence.Table;
 public class OrderItem {
 
 	@EmbeddedId
-	private OrderItemPK id;
+	private OrderItemPK id = new OrderItemPK();
 
 	private Integer quantity;
 
@@ -54,7 +55,8 @@ public class OrderItem {
 	public void setProduct(Product product) {
 		id.setProduct(product);
 	}
-
+	
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}

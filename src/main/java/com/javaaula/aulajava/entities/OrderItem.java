@@ -24,9 +24,9 @@ public class OrderItem {
 
 	}
 
-	public OrderItem(Order oder, Product product, Integer quantity, Double price) {
+	public OrderItem(Order order, Product product, Integer quantity, Double price) {
 		super();
-		id.setOrder(oder);
+		id.setOrder(order);
 		id.setProduct(product);
 		this.quantity = quantity;
 		this.price = price;
@@ -55,7 +55,7 @@ public class OrderItem {
 	public void setProduct(Product product) {
 		id.setProduct(product);
 	}
-	
+
 	public Order getOrder() {
 		return id.getOrder();
 	}
@@ -64,6 +64,11 @@ public class OrderItem {
 		id.setOrder(order);
 	}
 
+	public Double getSubTotal() {
+		return price * quantity;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

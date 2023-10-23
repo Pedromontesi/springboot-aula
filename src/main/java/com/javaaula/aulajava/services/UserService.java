@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.javaaula.aulajava.entities.User;
 import com.javaaula.aulajava.repositories.UserRepository;
 
-
 @Service
 public class UserService {
 
@@ -25,5 +24,8 @@ public class UserService {
 		return obj.get();
 	}
 
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
 
 }

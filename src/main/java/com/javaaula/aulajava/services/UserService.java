@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.javaaula.aulajava.entities.User;
 import com.javaaula.aulajava.repositories.UserRepository;
+import com.javaaula.aulajava.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -23,9 +24,9 @@ public class UserService {
 		return repository.findAll();
 	}
 
-	public User FindById(Long id) {
+	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public User insert(User obj) {
